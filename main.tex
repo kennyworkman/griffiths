@@ -1,0 +1,83 @@
+\documentclass[10pt]{article}
+\usepackage{kennyworkman}
+
+% https://www.reed.edu/physics/faculty/griffiths/
+\usepackage{graphicx}
+\def\rcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{ScriptR}}$}}}
+\def\brcurs{{\mbox{$\resizebox{.16in}{.08in}{\includegraphics{BoldR}}$}}}
+\def\hrcurs{{\mbox{$\hat \brcurs$}}}
+
+\newcommand{\uvec}[1]{\boldsymbol{\hat{\textbf{#1}}}}
+
+\title{Griffiths: Introduction to Electrodynamics}
+\author{Kenny Workman}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{Mathematical Foundations}
+
+\section{Electrostatics}
+
+In electrodynamics, we are often interested in the force a collection of source charges $q_1 \dots q_n$ exerts on a test charge $Q$.
+
+This problem becomes difficult if our source charge(s) are moving, so we constrain our cases to those where these charges are fixed. Electrostatics is the study of these cases.
+
+\subsection{The Electric Field}
+
+\begin{definition}
+	\textbf{The principle of superposition} tells us the interaction between charges are independent from other interactions. If $F_1$ is the force of $q_1$ acting on $Q$, then a collection of $\{q_i\}$ is simply $F = \sum_i q_i$.
+\end{definition}
+
+\begin{definition}
+	\textbf{Coulomb's law} gives us the force on $Q$ from $q$:
+	\[\frac 1 {4\pi\epsilon_0} \frac {qQ} {\rcurs^2} \hrcurs \]
+\end{definition}
+
+\begin{definition}
+	We can start to think of the force from $\{q_i\}$ in aggregate by factoring a common $Q$ from a sum of forces:
+	\[F = Q\boldsymbol{E}\]
+	\[\boldsymbol{E} = \frac 1 {4\pi\epsilon_0} \sum_i \frac{q_i}{\brcurs^2} \hrcurs\]
+	$\boldsymbol{E}$ is called the \textbf{electric field} of the source charges $\{q_i\}$.
+\end{definition}
+
+This gives machinery if we have a discrete collection of points. However, often our charge is more like a continuous jelly, motivating a continuous analogue to compute a field:
+
+\begin{definition}
+	\[\int \rho() \]
+\end{definition}
+
+\begin{example}{2.2}
+Calculation for the field distance $z$ from the midpoint of a line of length $2L$ with constant charge $\lambda$.
+
+We use Coulomb's law:
+	\[
+		\int_{-L}^{L} \frac 1{4\pi\epsilon_o} \frac{\lambda}{\rcurs^2} \hrcurs \dd \ell
+	\]
+where:
+\[ \rcurs^2 = z^2 + x^2\]
+\[ \hrcurs = \frac{x\uvec{x} + z\uvec{z}}{\sqrt{z^2 + x^2}} \]
+\end{example}
+\indent Skipping integration steps we are left with our field $\boldsymbol{E}$. Note our field is in general a function of our field point but what we provide here is an evaluation of this function.
+
+\[
+	\boldsymbol{E} = \frac 1{4\pi\epsilon_o} \frac{2\lambda L}{z \sqrt{z^2 + L^2}} \uvec{z}
+\]
+
+\begin{exercise}[2.4]
+	Calculate the electric field distance $z$ away from the midpoint of a square loop of constant charge $\lambda$ and side $a$.
+\end{exercise}
+
+\begin{solution}[2.4]
+
+The field is symmetric with respect to each side of the square, so we can compute a value for each side and add them up using the principal of superposition.
+
+To find the $\boldsymbol{E}'$ contributing from a single side, proceed as in $(2.2)$, but set $z = \sqrt{z^2 + (\frac a2)^2}$. We are interested in the vertical component of this vector, as horizontal components will cancel from opposing sides of the square, so our result is $4\cos(\theta)\boldsymbol{E}'$ where $\cos(\theta) = \frac{z}{\sqrt{z^2 + (\frac a2)^2}}$ and $4$ comes from each side.
+
+
+\end{solution}
+
+
+\end{document}
