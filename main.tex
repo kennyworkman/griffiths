@@ -28,25 +28,56 @@ This problem becomes difficult if our source charge(s) are moving, so we constra
 \subsection{The Electric Field}
 
 \begin{definition}
-	\textbf{The principle of superposition} tells us the interaction between charges are independent from other interactions. If $F_1$ is the force of $q_1$ acting on $Q$, then a collection of $\{q_i\}$ is simply $F = \sum_i q_i$.
+	\textbf{The principle of superposition} tells us the force exerted from
+	different charges are independent from each other. If $F_1$ is the force of
+	$q_1$ acting on $Q$, then the force from the collection $\{q_i\}$ is simply $F = \sum_i q_i$.
 \end{definition}
 
+Some notational convention: 
+\begin{itemize}
+	\item{$r'$ is a position vector of a source charge}
+	\item{$r$ is a position vector of a test charge}
+	\item{$\rcurs = r' - r$, the distance vector between our source and test}
+\end{itemize}
+
 \begin{definition}
-	\textbf{Coulomb's law} gives us the force on $Q$ from $q$:
-	\[\frac 1 {4\pi\epsilon_0} \frac {qQ} {\rcurs^2} \hrcurs \]
+	\textbf{Coulomb's law} gives us the force on our test charge $Q$ from a
+	single source charge $q$:
+	\[F = \frac 1 {4\pi\epsilon_0} \frac {qQ} {\rcurs^2} \hrcurs \]
 \end{definition}
 
 \begin{definition}
 	We can start to think of the force from $\{q_i\}$ in aggregate by factoring a common $Q$ from a sum of forces:
 	\[F = Q\boldsymbol{E}\]
-	\[\boldsymbol{E} = \frac 1 {4\pi\epsilon_0} \sum_i \frac{q_i}{\brcurs^2} \hrcurs\]
+	\[\boldsymbol{E} = \frac 1 {4\pi\epsilon_0} \sum_i \frac{q_i}{\rcurs^2} \hrcurs\]
 	$\boldsymbol{E}$ is called the \textbf{electric field} of the source charges $\{q_i\}$.
 \end{definition}
 
-This gives machinery if we have a discrete collection of points. However, often our charge is more like a continuous jelly, motivating a continuous analogue to compute a field:
+Notice that $E$ is a vector function dependent on the location of our test
+charge. This function is a mathematical description of our "field" and we are
+encouraged to think of it as some jelly-like substances that permeates space.
 
-\begin{definition}
-	\[\int \rho() \]
+This gives machinery if we have a discrete collection of points. However, often
+our charge is more like a continuous schmear over some line, surface or volume,
+motivating new expansions of Coulomb's law:
+
+\begin{definition}[Coulomb's for continuous line charge]
+	$E = \frac 1 {4\pi\epsilon_0} \int_l \frac{\lambda(r')}{\rcurs^2} \hrcurs \dd \ell$
+\end{definition}
+
+Here we are integrating over the contribution of each infinitessimal section of
+the continuous charge to the field. Notice that multiple things are "moving" - the
+displacement vector $\rcurs$ as well as the source charge (if it is not
+constant) $\lambda(r')$. 
+
+This extends to surfaces and volumes:
+
+\begin{definition}[Coulomb's for continuous surface charge]
+	$E = \frac 1 {4\pi\epsilon_0} \int \frac{\sigma(r')}{\rcurs^2} \hrcurs \dd a$
+\end{definition}
+
+\begin{definition}[Coulomb's for continuous volume charge]
+	$E = \frac 1 {4\pi\epsilon_0} \int \frac{\rho(r')}{\rcurs^2} \hrcurs \dd \tau$
 \end{definition}
 
 \begin{example}{2.2}
@@ -76,8 +107,27 @@ The field is symmetric with respect to each side of the square, so we can comput
 
 To find the $\boldsymbol{E}'$ contributing from a single side, proceed as in $(2.2)$, but set $z = \sqrt{z^2 + (\frac a2)^2}$. We are interested in the vertical component of this vector, as horizontal components will cancel from opposing sides of the square, so our result is $4\cos(\theta)\boldsymbol{E}'$ where $\cos(\theta) = \frac{z}{\sqrt{z^2 + (\frac a2)^2}}$ and $4$ comes from each side.
 
+\end{solution}
+
+\begin{exercise}[2.7]
+	Calculate the electric field distance $z$ from the surface of a sphere
+	centered at the origin with radius $R$ and constant charge $\lambda$.
+\end{exercise}
+
+\begin{solution}
+	\[ \bold{r} =  z\uvec{z}\]
+	\[ \bold{r'} = R(\sin\theta\cos\phi\uvec{x} + \sin\theta\sin\phi\uvec{y} + \cos\theta\uvec{z}) \]
+	\[ \brcurs = \bold{r} - \bold{r'} \]
+	\[ E = \frac 1 {4\pi\epsilon_0} \int_\theta \int_\phi \frac \lambda {\rcurs^2} \hrcurs \dd a\]
+
+	Really do not want to calculate this and will use as motivation for using
+	Gauss's law.
 
 \end{solution}
 
+\section{Divergence and curl of electric fields}
+
+
+\section{Appendix}
 
 \end{document}
